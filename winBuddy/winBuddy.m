@@ -201,8 +201,8 @@ static void *isActive = &isActive;
     border.boxType = NSBoxCustom;
     border.autoresizingMask = NSViewHeightSizable | NSViewWidthSizable;
     border.borderType = NSLineBorder;
-    border.borderColor = [NSColor blackColor];
-    border.borderWidth = 1;
+    border.borderColor = [NSColor grayColor];
+    border.borderWidth = 2;
     child.contentView = border;
     child.ignoresMouseEvents = YES;
     child.movableByWindowBackground = NO;
@@ -256,7 +256,7 @@ static void *isActive = &isActive;
 
 - (void)mf_updateBorder {
     NSWindow *borderWin = objc_getAssociatedObject(self, borderKey);
-    [borderWin.contentView setBorderColor:self.isKeyWindow ? [NSColor redColor] : [NSColor blackColor]];
+    [borderWin.contentView setBorderColor:self.isKeyWindow ? [NSColor colorWithRed:.24 green:.57 blue:.92 alpha:1] : [NSColor colorWithRed:.14 green:.14 blue:.14 alpha:1]];
     [borderWin setFrame:self.frame display:YES];
     if (![ReadPref(@"ShowBorder") boolValue])
             [borderWin.contentView setBorderColor:[NSColor clearColor]];
